@@ -1,0 +1,11 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.desc::first-letter {
+  font-size: 30px;
+  text-transform: uppercase;
+  font-weight: 600;
+}
