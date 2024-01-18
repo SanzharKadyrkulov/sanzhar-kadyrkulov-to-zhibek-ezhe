@@ -40,20 +40,10 @@ export default function CreateArticle({ addArticle }) {
       <h1
         style={{
           textAlign: "center",
+          marginBottom: "30px",
         }}
       >
-        <span
-          style={{
-            color: "grey",
-            marginRight: "15px",
-            fontSize: "18px",
-            cursor: "pointer",
-          }}
-          onClick={() => navigate("/")}
-        >
-          Go Home
-        </span>
-        Create new Article
+        Добавить новую статью
       </h1>
       <form
         style={{
@@ -76,7 +66,7 @@ export default function CreateArticle({ addArticle }) {
           onChange={handleChange}
           value={article.title}
         />
-        <input
+        <textarea
           style={{
             padding: "10px 5px",
           }}
@@ -85,6 +75,7 @@ export default function CreateArticle({ addArticle }) {
           name="description"
           onChange={handleChange}
           value={article.description}
+          rows="5"
         />
         <input
           style={{
@@ -102,6 +93,7 @@ export default function CreateArticle({ addArticle }) {
             background: "#89cff0",
             borderRadius: "10px",
             padding: "10px 5px",
+            cursor: "pointer",
           }}
         >
           Добавить

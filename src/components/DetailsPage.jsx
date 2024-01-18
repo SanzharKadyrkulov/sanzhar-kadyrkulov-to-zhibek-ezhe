@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import "../index.css";
 
-export default function DetailsPage({ articles }) {
+export default function DetailsPage({ articles, getOneArticle }) {
   const [article, setArticle] = useState({});
 
   const navigate = useNavigate();
@@ -10,8 +10,9 @@ export default function DetailsPage({ articles }) {
   const { id } = useParams();
 
   useEffect(() => {
-    setArticle(articles.find((item) => item.id === id));
+    getOneArticle(id).then(setArticle);
   }, [id]);
+
   return (
     <div>
       <h1
@@ -25,6 +26,7 @@ export default function DetailsPage({ articles }) {
       <div
         style={{
           display: "flex",
+          marginTop: "50px",
         }}
       >
         <p

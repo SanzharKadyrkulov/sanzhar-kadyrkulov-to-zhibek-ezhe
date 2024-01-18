@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 
-export default function EditArticle({ editArticle, articles }) {
+export default function EditArticle({ editArticle, getOneArticle }) {
   const [article, setArticle] = useState({});
 
   const navigate = useNavigate();
@@ -9,7 +9,7 @@ export default function EditArticle({ editArticle, articles }) {
   const { id } = useParams();
 
   useEffect(() => {
-    setArticle(articles.find((item) => item.id === id));
+    getOneArticle(id).then(setArticle);
   }, [id]);
 
   function handleChange(e) {
@@ -26,7 +26,7 @@ export default function EditArticle({ editArticle, articles }) {
       alert("Заполните все поля");
       return;
     }
-
+    console.log(article);
     editArticle({
       ...article,
     });
@@ -39,20 +39,10 @@ export default function EditArticle({ editArticle, articles }) {
       <h1
         style={{
           textAlign: "center",
+          marginBottom: "30px",
         }}
       >
-        <span
-          style={{
-            color: "grey",
-            marginRight: "15px",
-            fontSize: "18px",
-            cursor: "pointer",
-          }}
-          onClick={() => navigate("/")}
-        >
-          Go Home
-        </span>
-        Edit Article "{article.title}"
+        Изменить статью "{article.title}"
       </h1>
       <form
         style={{
@@ -75,7 +65,7 @@ export default function EditArticle({ editArticle, articles }) {
           onChange={handleChange}
           value={article.title}
         />
-        <input
+        <textarea
           style={{
             padding: "10px 5px",
           }}
@@ -84,6 +74,7 @@ export default function EditArticle({ editArticle, articles }) {
           name="description"
           onChange={handleChange}
           value={article.description}
+          rows="5"
         />
         <input
           style={{

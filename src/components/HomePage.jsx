@@ -1,9 +1,13 @@
-import React from "react";
+import React, { useEffect } from "react";
 import ArticleItem from "./ArticleItem";
 import { useNavigate } from "react-router-dom";
 
-export default function HomePage({ articles, deleteArticle }) {
+export default function HomePage({ articles, deleteArticle, getArticles }) {
   const navigate = useNavigate();
+
+  useEffect(() => {
+    getArticles();
+  }, []);
   return (
     <div>
       <h1
@@ -13,21 +17,7 @@ export default function HomePage({ articles, deleteArticle }) {
       >
         Wikipedia
       </h1>
-      <button
-        style={{
-          cursor: "pointer",
-          padding: "10px 5px",
-          background: "#89cff0",
-          borderRadius: "5px",
-          border: "none",
-          position: "absolute",
-          top: "10px",
-          right: "10px",
-        }}
-        onClick={() => navigate("/create")}
-      >
-        Create new
-      </button>
+
       <div
         style={{
           maxWidth: "500px",

@@ -9,3 +9,23 @@
   text-transform: uppercase;
   font-weight: 600;
 }
+
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.back {
+  border: none;
+  background: none;
+  font-size: 20px;
+  cursor: pointer;
+  gap: 10px;
+}
+
+.container {
+  max-width: 1300px;
+  width: 100%;
+  margin: 0 auto;
+}
