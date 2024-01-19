@@ -35,6 +35,7 @@ export default function DetailsPage({ articles, getOneArticle }) {
             width: "50%",
             fontStyle: "italic",
             padding: "10px",
+            fontSize: "16px",
           }}
         >
           {article.description}

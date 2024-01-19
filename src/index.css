@@ -29,3 +29,19 @@
   width: 100%;
   margin: 0 auto;
 }
+
+.article-item {
+  padding: 10px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.article-item.active {
+  border: 1px black solid;
+}
+
+@media screen and (max-width: 1300px) {
+  .container {
+    padding: 0 20px;
+  }
+}

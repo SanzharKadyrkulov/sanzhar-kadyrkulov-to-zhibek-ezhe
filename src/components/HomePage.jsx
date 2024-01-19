@@ -1,15 +1,17 @@
 import React, { useEffect } from "react";
-import ArticleItem from "./ArticleItem";
-import { useNavigate } from "react-router-dom";
 
-export default function HomePage({ articles, deleteArticle, getArticles }) {
-  const navigate = useNavigate();
-
+export default function HomePage({
+  articles,
+  selectedArticle,
+  getArticles,
+  setSelectedArticle,
+}) {
   useEffect(() => {
-    getArticles();
+    getArticles().then((data) => setSelectedArticle(data[0]));
   }, []);
+
   return (
-    <div>
+    <div className="container">
       <h1
         style={{
           textAlign: "center",
@@ -20,22 +22,67 @@ export default function HomePage({ articles, deleteArticle, getArticles }) {
 
       <div
         style={{
-          maxWidth: "500px",
           width: "100%",
           display: "flex",
-          flexDirection: "column",
-          justifyContent: "center",
+          justifyContent: "space-between",
+          alignItems: "flex-start",
           gap: "15px",
           margin: "80px auto",
         }}
       >
-        {articles.map((item) => (
-          <ArticleItem
-            key={item.id}
-            item={item}
-            deleteArticle={deleteArticle}
-          />
-        ))}
+        <div
+          style={{
+            width: "30%",
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+          }}
+        >
+          {articles.map((item) => (
+            <p
+              key={item.id}
+              className={`article-item ${
+                selectedArticle?.id === item.id && "active"
+              }`}
+              onClick={() => setSelectedArticle(item)}
+            >
+              {item.title}
+            </p>
+          ))}
+        </div>
+        <div
+          style={{
+            width: "70%",
+          }}
+        >
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+            }}
+          >
+            <p
+              className="desc"
+              style={{
+                width: "100%",
+                fontStyle: "italic",
+                padding: "10px",
+                fontSize: "18px",
+              }}
+            >
+              {selectedArticle?.description}
+            </p>
+            <img
+              style={{
+                width: "60%",
+                borderRadius: "10px",
+                margin: "0 auto",
+              }}
+              src={selectedArticle?.image}
+              alt=""
+            />
+          </div>
+        </div>
       </div>
     </div>
   );

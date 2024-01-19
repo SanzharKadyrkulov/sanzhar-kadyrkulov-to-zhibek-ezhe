@@ -1,8 +1,10 @@
 import React from "react";
-import { Outlet, useNavigate } from "react-router-dom";
+import { Outlet, useNavigate, useLocation } from "react-router-dom";
 
 export default function MainLayout() {
   const navigate = useNavigate();
+  const { pathname } = useLocation();
+
   return (
     <div className="container">
       <div
@@ -36,30 +38,60 @@ export default function MainLayout() {
           style={{
             cursor: "pointer",
             padding: "10px 5px",
-            // background: "#89cff0",
             borderRadius: "5px",
             border: "none",
             width: "max-content",
           }}
           className="center"
-          onClick={() => navigate("/create")}
+          onClick={() => navigate("/")}
         >
-          Добавить статью
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            strokeWidth={1.5}
-            stroke="currentColor"
-            className="w-6 h-6"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M12 9v6m3-3H9m12 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
-            />
-          </svg>
+          Читать статьи
         </button>
+        {pathname === "/admin" ? (
+          <button
+            style={{
+              cursor: "pointer",
+              padding: "10px 5px",
+              // background: "#89cff0",
+              borderRadius: "5px",
+              border: "none",
+              width: "max-content",
+            }}
+            className="center"
+            onClick={() => navigate("/create")}
+          >
+            Добавить статью
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth={1.5}
+              stroke="currentColor"
+              className="w-6 h-6"
+              width={30}
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M12 9v6m3-3H9m12 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
+              />
+            </svg>
+          </button>
+        ) : (
+          <button
+            style={{
+              cursor: "pointer",
+              padding: "10px 5px",
+              borderRadius: "5px",
+              border: "none",
+              width: "max-content",
+            }}
+            className="center"
+            onClick={() => navigate("/admin")}
+          >
+            Изменить контент
+          </button>
+        )}
       </div>
       <Outlet />
     </div>
