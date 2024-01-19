@@ -26,7 +26,6 @@ export default function EditArticle({ editArticle, getOneArticle }) {
       alert("Заполните все поля");
       return;
     }
-    console.log(article);
     editArticle({
       ...article,
     });

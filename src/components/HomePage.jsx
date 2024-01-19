@@ -80,7 +80,9 @@ export default function HomePage({
                 src={selectedArticle?.image}
                 alt=""
               />
-              {selectedArticle?.description}
+              {selectedArticle?.description.split("").map((item) => {
+                return item === "\n" ? <br /> : item;
+              })}
             </p>
           </div>
         </div>

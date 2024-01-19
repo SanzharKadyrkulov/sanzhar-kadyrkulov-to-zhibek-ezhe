@@ -18,7 +18,6 @@ export default function CreateArticle({ addArticle }) {
     });
   }
 
-  console.log(article);
   function onSubmit(e) {
     e.preventDefault();
 
