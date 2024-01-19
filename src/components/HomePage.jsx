@@ -70,17 +70,18 @@ export default function HomePage({
                 fontSize: "18px",
               }}
             >
+              <img
+                style={{
+                  width: "300px",
+                  float: "right",
+                  borderRadius: "10px",
+                  margin: "0 auto",
+                }}
+                src={selectedArticle?.image}
+                alt=""
+              />
               {selectedArticle?.description}
             </p>
-            <img
-              style={{
-                width: "60%",
-                borderRadius: "10px",
-                margin: "0 auto",
-              }}
-              src={selectedArticle?.image}
-              alt=""
-            />
           </div>
         </div>
       </div>
