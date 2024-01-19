@@ -7,7 +7,9 @@ export default function HomePage({
   setSelectedArticle,
 }) {
   useEffect(() => {
-    getArticles().then((data) => setSelectedArticle(data[0]));
+    getArticles().then(
+      (data) => !selectedArticle && setSelectedArticle(data[0])
+    );
   }, []);
 
   return (
